@@ -119,7 +119,7 @@ class HomeActivity extends StatelessWidget {
                 currentAccountPicture: Image.network(
                   "https://media.licdn.com/dms/image/v2/D5603AQFoYUJq3jYfKA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1685628922814?e=1762387200&v=beta&t=TQNqPy7-pCVKoaY-iy4KYptDgnDYV7e9Soo92sBaSXE",
                 ),
-                onDetailsPressed: (){
+                onDetailsPressed: () {
                   MySnackBar("This is my profile", context);
                 },
               ),
@@ -162,6 +162,68 @@ class HomeActivity extends StatelessWidget {
           ],
         ),
       ),
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.zero,
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.white),
+                accountName: Text(
+                  "Pieash Ahmed",
+                  style: TextStyle(color: Colors.black),
+                ),
+                accountEmail: Text(
+                  "pieash9@gmail.com",
+                  style: TextStyle(color: Colors.black),
+                ),
+                currentAccountPicture: Image.network(
+                  "https://media.licdn.com/dms/image/v2/D5603AQFoYUJq3jYfKA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1685628922814?e=1762387200&v=beta&t=TQNqPy7-pCVKoaY-iy4KYptDgnDYV7e9Soo92sBaSXE",
+                ),
+                onDetailsPressed: () {
+                  MySnackBar("This is my profile", context);
+                },
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {
+                MySnackBar("Home", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Profile"),
+              onTap: () {
+                MySnackBar("person", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_mail),
+              title: Text("Contact"),
+              onTap: () {
+                MySnackBar("contact_mail", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.help),
+              title: Text("Help"),
+              onTap: () {
+                MySnackBar("help", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text("About"),
+              onTap: () {
+                MySnackBar("about", context);
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(child: Image.network("https://media.istockphoto.com/id/1394440950/photo/natural-view-cosmos-filed-and-sunset-on-garden-background.webp?b=1&s=612x612&w=0&k=20&c=o3n-h2j4aBnaDqKeY-876cTRm1DLOsZcCjcfDZf_9TQ=")),
     );
   }
 }

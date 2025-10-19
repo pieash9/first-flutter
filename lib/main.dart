@@ -35,34 +35,44 @@ class HomeActivity extends StatelessWidget {
     ).showSnackBar(SnackBar(content: Text(message)));
   }
 
+  MyAleartDialog(context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            title: Text("Do you want"),
+            content: Text("Do you want to delete?"),
+            actions: [
+              TextButton(onPressed: () {
+                MySnackBar("Deleted", context);
+                Navigator.of(context).pop();
+              }, child: Text("Yes")),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("No"),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(title: Text("Inventory")),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            child: Image.network(
-              "https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt5f18c2119ce26485/6668df65db90945e0caf9be6/beautiful-flowers-lotus.jpg?q=70&width=3840&auto=webp",
-            ),
-          ),Container(
-            height: 100,
-            width: 100,
-            child: Image.network(
-              "https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt5f18c2119ce26485/6668df65db90945e0caf9be6/beautiful-flowers-lotus.jpg?q=70&width=3840&auto=webp",
-            ),
-          ),Container(
-            height: 100,
-            width: 100,
-            child: Image.network(
-              "https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt5f18c2119ce26485/6668df65db90945e0caf9be6/beautiful-flowers-lotus.jpg?q=70&width=3840&auto=webp",
-            ),
-          ),
-        ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            MyAleartDialog(context);
+          },
+          child: Text("Click me"),
+        ),
       ),
     );
   }

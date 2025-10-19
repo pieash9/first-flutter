@@ -35,44 +35,55 @@ class HomeActivity extends StatelessWidget {
     ).showSnackBar(SnackBar(content: Text(message)));
   }
 
-  MyAleartDialog(context) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Expanded(
-          child: AlertDialog(
-            title: Text("Do you want"),
-            content: Text("Do you want to delete?"),
-            actions: [
-              TextButton(onPressed: () {
-                MySnackBar("Deleted", context);
-                Navigator.of(context).pop();
-              }, child: Text("Yes")),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("No"),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 6),
+      minimumSize: Size(double.infinity, 60),
+    );
+
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text("Inventory")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            MyAleartDialog(context);
-          },
-          child: Text("Click me"),
-        ),
+      appBar: AppBar(title: Text("My App")),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                label: Text("First Name"),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                label: Text("Last Name"),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                label: Text("Email Address"),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: buttonStyle,
+              child: Text("Submit"),
+            ),
+          ),
+        ],
       ),
     );
   }

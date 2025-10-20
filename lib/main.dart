@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeActivity extends StatelessWidget {
-  HomeActivity({super.key});
+  const HomeActivity({super.key});
 
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(
@@ -47,38 +47,89 @@ class HomeActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return DefaultTabController(
-      length: 8,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("My App"),
-          bottom: TabBar(
-            isScrollable: true,
-            tabs: [
-              Tab(icon: Icon(Icons.home), text: "Home"),
-              Tab(icon: Icon(Icons.search), text: "Search"),
-              Tab(icon: Icon(Icons.settings), text: "Settings"),
-              Tab(icon: Icon(Icons.email), text: "Email"),
-              Tab(icon: Icon(Icons.contact_mail), text: "Contact"),
-              Tab(icon: Icon(Icons.person), text: "Profile"),
-              Tab(icon: Icon(Icons.access_alarm), text: "Alarm"),
-              Tab(icon: Icon(Icons.account_balance), text: "Balance"),
-            ],
+    return Scaffold(
+      appBar: AppBar(title: const Text("Home")),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Activity1()),
+              );
+            },
+            child: Text("Go activity 1"),
           ),
-        ),
-        body: TabBarView(
-          children: [
-            HomeFragment(),
-            SearchFragment(),
-            SettingsFragment(),
-            EmailFragment(),
-            ContactFragment(),
-            ProfileFragment(),
-            AlarmFragment(),
-            BalanceFragment(),
-          ],
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Activity2()),
+              );
+            },
+            child: Text("Go activity 2"),
+          ),
+        ],
+      ),
+    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
+  }
+}
+
+class Activity1 extends StatelessWidget {
+  const Activity1({super.key});
+
+  MySnackBar(message, context) {
+    return ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(title: const Text("Activity1")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Activity2()),
+            );
+          },
+          child: Text("Activity2"),
         ),
       ),
-    );
+    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
+  }
+}
+
+class Activity2 extends StatelessWidget {
+  const Activity2({super.key});
+
+  MySnackBar(message, context) {
+    return ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(title: const Text("Activity2")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Activity1()),
+            );
+          },
+          child: Text("Activity1"),
+        ),
+      ),
+    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
   }
 }

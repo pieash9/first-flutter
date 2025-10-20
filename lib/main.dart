@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'Fragment/AlarmFragment.dart';
-import 'Fragment/BalanceFragment.dart';
-import 'Fragment/ContactFragment.dart';
-import 'Fragment/EmailFragment.dart';
-import 'Fragment/HomeFragment.dart';
-import 'Fragment/ProfileFragment.dart';
-import 'Fragment/SearchFragment.dart';
-import 'Fragment/SettingsFragment.dart';
-
 void main() {
   // is where execution starts.
   runApp(
@@ -49,101 +40,15 @@ class HomeActivity extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(title: const Text("Home")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      Activity1("This is from home to activity 1"),
-                ),
-              );
-            },
-            child: Text("Go activity 1"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      Activity2("This is from home to activity 2"),
-                ),
-              );
-            },
-            child: Text("Go activity 2"),
-          ),
-        ],
-      ),
-    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
-  }
-}
-
-class Activity1 extends StatelessWidget {
-  String msg;
-
-  Activity1(this.msg, {super.key});
-
-  MySnackBar(message, context) {
-    return ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(title: Text(msg)),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    Activity2("This is from home to activity 2"),
-              ),
-            );
-          },
-          child: Text("Activity2"),
-        ),
-      ),
-    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
-  }
-}
-
-class Activity2 extends StatelessWidget {
-  String msg;
-
-  Activity2(this.msg, {super.key});
-
-  MySnackBar(message, context) {
-    return ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(title: Text(msg)),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    Activity1("This is from home to activity 1"),
-              ),
-            );
-          },
-          child: Text("Activity1"),
+      body: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
+        elevation: 10,
+        shadowColor: Colors.green,
+        color: Color.fromRGBO(20, 176, 90, 1),
+        child: SizedBox(
+          height: 200,
+          width: 200,
+          child: Center(child: Text("This is card!")),
         ),
       ),
     ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.

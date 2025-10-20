@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'Fragment/AlarmFragment.dart';
+import 'Fragment/BalanceFragment.dart';
+import 'Fragment/ContactFragment.dart';
+import 'Fragment/EmailFragment.dart';
+import 'Fragment/HomeFragment.dart';
+import 'Fragment/ProfileFragment.dart';
+import 'Fragment/SearchFragment.dart';
+import 'Fragment/SettingsFragment.dart';
+
 void main() {
   // is where execution starts.
   runApp(
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeActivity extends StatelessWidget {
-  const HomeActivity({super.key});
+  HomeActivity({super.key});
 
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(
@@ -37,53 +46,38 @@ class HomeActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 6),
-      minimumSize: Size(double.infinity, 60),
-    );
-
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(title: Text("My App")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                label: Text("First Name"),
-                border: OutlineInputBorder(),
-              ),
-            ),
+    return DefaultTabController(
+      length: 8,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("My App"),
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(icon: Icon(Icons.home), text: "Home"),
+              Tab(icon: Icon(Icons.search), text: "Search"),
+              Tab(icon: Icon(Icons.settings), text: "Settings"),
+              Tab(icon: Icon(Icons.email), text: "Email"),
+              Tab(icon: Icon(Icons.contact_mail), text: "Contact"),
+              Tab(icon: Icon(Icons.person), text: "Profile"),
+              Tab(icon: Icon(Icons.access_alarm), text: "Alarm"),
+              Tab(icon: Icon(Icons.account_balance), text: "Balance"),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                label: Text("Last Name"),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                label: Text("Email Address"),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: buttonStyle,
-              child: Text("Submit"),
-            ),
-          ),
-        ],
+        ),
+        body: TabBarView(
+          children: [
+            HomeFragment(),
+            SearchFragment(),
+            SettingsFragment(),
+            EmailFragment(),
+            ContactFragment(),
+            ProfileFragment(),
+            AlarmFragment(),
+            BalanceFragment(),
+          ],
+        ),
       ),
     );
   }

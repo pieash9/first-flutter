@@ -56,7 +56,10 @@ class HomeActivity extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Activity1()),
+                MaterialPageRoute(
+                  builder: (context) =>
+                      Activity1("This is from home to activity 1"),
+                ),
               );
             },
             child: Text("Go activity 1"),
@@ -65,7 +68,10 @@ class HomeActivity extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Activity2()),
+                MaterialPageRoute(
+                  builder: (context) =>
+                      Activity2("This is from home to activity 2"),
+                ),
               );
             },
             child: Text("Go activity 2"),
@@ -77,7 +83,9 @@ class HomeActivity extends StatelessWidget {
 }
 
 class Activity1 extends StatelessWidget {
-  const Activity1({super.key});
+  String msg;
+
+  Activity1(this.msg, {super.key});
 
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(
@@ -89,13 +97,16 @@ class Activity1 extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: const Text("Activity1")),
+      appBar: AppBar(title: Text(msg)),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Activity2()),
+              MaterialPageRoute(
+                builder: (context) =>
+                    Activity2("This is from home to activity 2"),
+              ),
             );
           },
           child: Text("Activity2"),
@@ -106,7 +117,9 @@ class Activity1 extends StatelessWidget {
 }
 
 class Activity2 extends StatelessWidget {
-  const Activity2({super.key});
+  String msg;
+
+  Activity2(this.msg, {super.key});
 
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(
@@ -118,13 +131,16 @@ class Activity2 extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: const Text("Activity2")),
+      appBar: AppBar(title: Text(msg)),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Activity1()),
+              MaterialPageRoute(
+                builder: (context) =>
+                    Activity1("This is from home to activity 1"),
+              ),
             );
           },
           child: Text("Activity1"),

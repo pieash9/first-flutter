@@ -1,3 +1,4 @@
+import 'package:app1/style.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,31 +27,24 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeActivity extends StatelessWidget {
+class HomeActivity extends StatefulWidget {
   const HomeActivity({super.key});
 
-  MySnackBar(message, context) {
-    return ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
-  }
+  @override
+  State<HomeActivity> createState() => _HomeActivityState();
+}
 
+class _HomeActivityState extends State<HomeActivity> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: const Text("Home")),
-      body: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
-        elevation: 10,
-        shadowColor: Colors.green,
-        color: Color.fromRGBO(20, 176, 90, 1),
-        child: SizedBox(
-          height: 200,
-          width: 200,
-          child: Center(child: Text("This is card!")),
-        ),
+      appBar: AppBar(
+        title: Text("Responsive Text Style", style: HeadLine(context)),
       ),
-    ); // Scaffold = provides a basic structure for the app screen, including app bar, body, etc.
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text("Hello Flutter", style: HeadLine(context))],
+      ),
+    );
   }
 }
